@@ -1,0 +1,22 @@
+{
+  "name": "dasboard-server",
+  "version": "0.1.0",
+  "description": "Dasbord server side",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spbd/server.git"
+  },
+  "keywords": [
+    "dasboard",
+    "server"
+  ],
+  "author": "Anton Usmansky <anton.usmansky@gmail.com> (http://github.com/j0tunn",
+  "bugs": {
+    "url": "https://github.com/spbd/server/issues"
+  },
+  "homepage": "https://github.com/spbd/server",
+  "dependencies": {
+    "restify": "~2.8.3"
+  }
+}
