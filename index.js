@@ -1,20 +1,18 @@
-var restify = require('restify'),
-    pkgJson = require('./package');
+var app = require('http').createServer(handler),
+    io = require('socket.io')(app);
 
-var server = restify.createServer({
-  name: pkgJson.name,
-  version: pkgJson.version
-});
+app.listen(7654);
 
-server.use(restify.acceptParser(server.acceptable));
-server.use(restify.queryParser());
-server.use(restify.bodyParser());
+function handler(req, res) {
+    res.writeHeader(200, {'Access-Control-Allow-Origin': '*'});
+    res.end('o.O');
+}
 
-server.get('/echo/:name', function(req, res, next) {
-  res.send(req.params);
-  return next();
-});
+io.on('connection', function(socket){
+    console.log('connected');
+    socket.emit('hi');
 
-server.listen(7654, function() {
-  console.log('%s listening at %s', server.name, server.url);
+    socket.on('disconnect', function(){
+        console.log('user disconnected');
+    });
 });
