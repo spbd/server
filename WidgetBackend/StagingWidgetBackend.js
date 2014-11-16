@@ -1,6 +1,7 @@
 'use strict';
 
 var inherit = require('inherit'),
+    _ = require('lodash'),
     WidgetBackend = require('./WidgetBackend');
 
 var StagingWidgetBackend = inherit(WidgetBackend, {
@@ -14,7 +15,7 @@ var StagingWidgetBackend = inherit(WidgetBackend, {
     ///
     go: function() {
         this._interval = setInterval(function() {
-            this.emit('update', {total: '100GB', available: '7GB'});
+            this.emit('update', {total: '100GB', available: _.random(10) + 'GB'});
         }.bind(this), 5000);
     },
 
