@@ -10,14 +10,27 @@ Server side for dashboard
   var socket = io("http://37.9.65.16:80");
 
   socket.emit('new-instance', {type: 'staging', id: 1, host: 'some.host'});
-  socket.emit('new-instance', {type: 'reviewers', id: 2, repo: 'https://github.com/owner/repo'})
-
   socket.on('update_1', function(data) {
     console.log('Staging widget updated:', data);
   });
 
-  socket.on('update_2', funciton(data) {
+  socket.emit('new-instance', {type: 'reviewers', id: 2});
+  socket.on('update_2', function(data) {
     console.log('Reviewers widget updated:', data);
+  });
+
+  socket.emit('new-instance', {type: 'builds', id: 3});
+  socket.on('libs_3', function(data) {
+    console.log('Libs list:', data);
+    socket.emit('init_3', {lib: 'some-lib'});
+  });
+  socket.on('update_3', function(data) {
+    console.log('Builds widget updated:', data);
+  });
+
+  socket.emit('new-instance', {type: 'PRs', id: 4, repo: 'https://github.com/some/repo'});
+  socket.on('update_4', function(data) {
+    console.log('PRs widget updated:', data);
   });
 </script>
 
