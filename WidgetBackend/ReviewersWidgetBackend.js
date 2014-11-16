@@ -17,9 +17,7 @@ var ReviewersWidgetBackend = inherit(WidgetBackend, {
             this.emit('update', [
                     {
                         id: 'TASKID-2313',
-                        desk: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi' +
-                            'eligendi sint, expedita at beatae reprehenderit deserunt fugit totam' +
-                            'neque unde.',
+                        desk: 'PR-stats widget',
                         points: 40,
                         priority: 'critical',
                         reviewer: {
@@ -29,9 +27,7 @@ var ReviewersWidgetBackend = inherit(WidgetBackend, {
                     },
                     {
                         id: 'TASKID-2311',
-                        desk: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi' +
-                            'eligendi sint, expedita at beatae reprehenderit deserunt fugit totam' +
-                            'neque unde.',
+                        desk: 'Reviewers widget',
                         points: 40,
                         priority: 'normal',
                         reviewer: {
@@ -41,9 +37,7 @@ var ReviewersWidgetBackend = inherit(WidgetBackend, {
                     },
                     {
                         id: 'TASKID-2113',
-                        desk: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi' +
-                            'eligendi sint, expedita at beatae reprehenderit deserunt fugit totam' +
-                            'neque unde.',
+                        desk: 'Backend realization',
                         points: 40,
                         priority: 'critical',
                         reviewer: {
@@ -53,9 +47,7 @@ var ReviewersWidgetBackend = inherit(WidgetBackend, {
                     },
                     {
                         id: 'TASKID-2113',
-                        desk: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi' +
-                            'eligendi sint, expedita at beatae reprehenderit deserunt fugit totam' +
-                            'neque unde.',
+                        desk: 'Staging space widget',
                         points: 40,
                         priority: 'critical',
                         reviewer: {
@@ -65,9 +57,7 @@ var ReviewersWidgetBackend = inherit(WidgetBackend, {
                     },
                     {
                         id: 'TASKID-2113',
-                        desk: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi' +
-                            'eligendi sint, expedita at beatae reprehenderit deserunt fugit totam' +
-                            'neque unde.',
+                        desk: 'Lib status widget',
                         points: 40,
                         priority: 'critical',
                         reviewer: {

@@ -2,7 +2,8 @@
 
 var inherit = require('inherit'),
     _ = require('lodash'),
-    WidgetBackend = require('./WidgetBackend');
+    WidgetBackend = require('./WidgetBackend'),
+    LIBS = ['bem-core', 'bem-components'];
 
 var BuildsWidgetBackend = inherit(WidgetBackend, {
     ///
@@ -15,7 +16,7 @@ var BuildsWidgetBackend = inherit(WidgetBackend, {
     ///
     _init: function() {
         this.on('get-libs', function() {
-            this.emit('libs', ['bem-core', 'bem-components']);
+            this.emit('libs', LIBS);
             this.on('init', function(data) {
                 this._lib = data.lib;
                 this.go();
@@ -29,21 +30,49 @@ var BuildsWidgetBackend = inherit(WidgetBackend, {
             clearInterval(this._interval);
         }
 
-        this._interval = setInterval(function() {
-            this.emit('update', [
-                    {
-                        name: 'dev',
-                        status: _.random(1) ? 'success' : 'failed',
-                        time: '23.10.2014 - 10:21'
-                    },
-                    {
-                        name: 'support/2.x',
-                        status: 'success',
-                        time: '23.10.2014 - 10:21'
-                    }
-                ]
-            );
-        }.bind(this), 5000);
+        this._update();
+        this._interval = setInterval(this._update.bind(this), 5000);
+    },
+
+    ///
+    _update: function() {
+        var data = (function(lib) {
+                switch(lib) {
+                    case LIBS[0]:
+                        return [
+                            {
+                                name: 'dev',
+                                status: _.random(1) ? 'success' : 'failed',
+                                time: '23.10.2014 - 10:21'
+                            },
+                            {
+                                name: 'support/2.x',
+                                status: _.random(1) ? 'success' : 'failed',
+                                time: '23.10.2014 - 10:21'
+                            }
+                        ];
+                    case LIBS[1]:
+                        return [
+                            {
+                                name: 'master',
+                                status: _.random(1) ? 'success' : 'failed',
+                                time: '23.10.2014 - 10:21'
+                            },
+                            {
+                                name: 'support/1.x',
+                                status: _.random(1) ? 'success' : 'failed',
+                                time: '23.10.2014 - 10:21'
+                            },
+                            {
+                                name: 'support/2.x',
+                                status: _.random(1) ? 'success' : 'failed',
+                                time: '23.10.2014 - 10:21'
+                            }
+                        ];
+                }
+            })(this._lib);
+
+        this.emit('update', data);
     },
 
     ///
