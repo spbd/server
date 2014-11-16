@@ -13,15 +13,8 @@ var StagingWidgetBackend = inherit(WidgetBackend, {
     },
 
     ///
-    go: function() {
-        this._interval = setInterval(function() {
-            this.emit('update', {total: '100GB', available: _.random(10) + 'GB'});
-        }.bind(this), 5000);
-    },
-
-    ///
-    stop: function() {
-        clearInterval(this._interval);
+    update: function() {
+        this.emit('update', {total: '100GB', available: _.random(10) + 'GB'});
     }
 });
 

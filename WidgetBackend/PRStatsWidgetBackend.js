@@ -13,18 +13,11 @@ var PRStatsWidgetBackend = inherit(WidgetBackend, {
     },
 
     ///
-    go: function() {
-        this._interval = setInterval(function() {
-            this.emit('update', {
-                    users: {all: _.random(100), today: _.random(10)},
-                    team: {all: _.random(200), today: _.random(15)}
-                });
-        }.bind(this), 5000);
-    },
-
-    ///
-    stop: function() {
-        clearInterval(this._interval);
+    update: function() {
+        this.emit('update', {
+                users: {all: _.random(100), today: _.random(10)},
+                team: {all: _.random(200), today: _.random(15)}
+            });
     }
 });
 

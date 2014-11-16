@@ -16,6 +16,8 @@ var WidgetBackend = inherit({
         this._socket.on('disconnect', function() {
             this.stop();
         }.bind(this));
+
+        this._interval = null;
     },
 
     ///
@@ -29,7 +31,23 @@ var WidgetBackend = inherit({
     },
 
     ///
-    stop: function() {}
+    go: function() {
+        if(this._interval) {
+            clearInterval(this._interval);
+        }
+
+        this.update();
+        this._interval = setInterval(this.update.bind(this), 5000);
+    },
+
+    ///
+    update: function() {
+    },
+
+    ///
+    stop: function() {
+        clearInterval(this._interval);
+    }
 });
 
 module.exports = WidgetBackend;

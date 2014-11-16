@@ -9,7 +9,6 @@ var BuildsWidgetBackend = inherit(WidgetBackend, {
     ///
     __constructor: function(data, socket) {
         this.__base.apply(this, arguments);
-        this._interval = null;
         this._init();
     },
 
@@ -25,17 +24,7 @@ var BuildsWidgetBackend = inherit(WidgetBackend, {
     },
 
     ///
-    go: function() {
-        if(this._interval) {
-            clearInterval(this._interval);
-        }
-
-        this._update();
-        this._interval = setInterval(this._update.bind(this), 5000);
-    },
-
-    ///
-    _update: function() {
+    update: function() {
         var data = (function(lib) {
                 switch(lib) {
                     case LIBS[0]:
@@ -73,11 +62,6 @@ var BuildsWidgetBackend = inherit(WidgetBackend, {
             })(this._lib);
 
         this.emit('update', data);
-    },
-
-    ///
-    stop: function() {
-        clearInterval(this._interval);
     }
 });
 
