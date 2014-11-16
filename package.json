@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/spbd/server",
   "dependencies": {
-    "socket.io": "~1.2.0"
+    "socket.io": "~1.2.0",
+    "inherit": "~2.2.2",
+    "lodash": "~2.4.1"
   }
 }
