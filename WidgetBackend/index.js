@@ -2,8 +2,9 @@
 
 var _ = require('lodash'),
     backends = {
-        staging: require('./StagingWidgetBackend'),
-        builds: require('./BuildsWidgetBackend')
+        'staging-space': require('./StagingWidgetBackend'),
+        'lib-status': require('./BuildsWidgetBackend'),
+        'pr-stats': require('./PRStatsWidgetBackend')
     },
     instances = [];
 

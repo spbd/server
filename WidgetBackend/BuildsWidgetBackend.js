@@ -13,20 +13,31 @@ var BuildsWidgetBackend = inherit(WidgetBackend, {
 
     ///
     _init: function() {
-        this.emit('libs', ['bem-core', 'bem-components']);
-        this.on('init', function(data) {
-            this._lib = data.lib;
-            this.go();
+        this.on('get-libs', function() {
+            this.emit('libs', ['bem-core', 'bem-components']);
+            this.on('init', function(data) {
+                this._lib = data.lib;
+                this.go();
+            }.bind(this));
         }.bind(this));
     },
 
     ///
     go: function() {
         this._interval = setInterval(function() {
-            this.emit('update', {
-                    users: {all: _.random(100), today: _.random(10)},
-                    team: {all: _.random(200), today: _.random(15)}
-                });
+            this.emit('update', [
+                    {
+                        name: 'dev',
+                        status: _.random(1) ? 'success' : 'failed',
+                        time: '23.10.2014 - 10:21'
+                    },
+                    {
+                        name: 'support/2.x',
+                        status: 'success',
+                        time: '23.10.2014 - 10:21'
+                    }
+                ]
+            );
         }.bind(this), 5000);
     },
 
