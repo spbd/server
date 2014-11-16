@@ -8,6 +8,7 @@ var BuildsWidgetBackend = inherit(WidgetBackend, {
     ///
     __constructor: function(data, socket) {
         this.__base.apply(this, arguments);
+        this._interval = null;
         this._init();
     },
 
@@ -24,6 +25,10 @@ var BuildsWidgetBackend = inherit(WidgetBackend, {
 
     ///
     go: function() {
+        if(this._interval) {
+            clearInterval(this._interval);
+        }
+
         this._interval = setInterval(function() {
             this.emit('update', [
                     {
