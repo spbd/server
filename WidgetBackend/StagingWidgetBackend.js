@@ -14,7 +14,7 @@ var StagingWidgetBackend = inherit(WidgetBackend, {
 
     ///
     update: function() {
-        this.emit('update', {total: '100GB', available: _.random(10) + 'GB'});
+        this.emit('update', {total: 100000, used: _.random(60000, 80000)});
     }
 });
 

@@ -12,7 +12,13 @@ var ReviewersWidgetBackend = inherit(WidgetBackend, {
 
     ///
     update: function() {
-        this.emit('update', [
+        this.emit('update', {
+            sprint: {
+                number: 15,
+                openedTasks: 9,
+                closedTasks: 6
+            },
+            tasks: [
                 {
                     id: 'TASKID-2313',
                     desk: 'PR-stats widget',
@@ -64,6 +70,7 @@ var ReviewersWidgetBackend = inherit(WidgetBackend, {
                     }
                 }
             ]
+        }
         );
     }
 });
